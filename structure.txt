@@ -1,0 +1,31 @@
+nightlight_atlas/
+│
+├── 1_data/                              # Data storage
+│   ├── 1.1_raw/                         # Raw SHRUG and nightlight data
+│   ├── 1.2_processed/                   # Cleaned and merged datasets
+│
+├── 2_notebooks/                         # Jupyter notebooks for analysis
+│   ├── 2.1_data_exploration.ipynb       # Exploring the dataset
+│   ├── 2.2_data_cleaning.ipynb          # Preprocessing steps
+│   ├── 2.3_analysis.ipynb               # Impact analysis and results
+│
+├── 3_src/                               # Python scripts for modularity
+│   ├── 3.1_preprocessing.py             # Data cleaning/preprocessing scripts
+│   ├── 3.2_analysis.py                  # Statistical and econometric analysis
+│   ├── 3.3_visualization.py             # Functions for generating plots/maps
+│
+├── 4_dashboard/                         # App files
+│   ├── 4.1_app.py                       # Main Streamlit/Dash app
+│   ├── 4.2_components/                  # Custom components (charts, maps)
+│
+├── 5_reports/                           # Final outputs
+│   ├── 5.1_figures/                     # Graphs and visualizations
+│   ├── 5.2_final_report.pdf             # Summary report
+│
+├── README.md                            # Project overview
+├── requirements.txt                     # Python dependencies
+├── LICENSE                              # License information
+├── .gitignore                           # Files to ignore in Git
+└── setup.py                             # Optional, for packaging
+
+git add . && git commit -m "Your descriptive commit message here" && git push
