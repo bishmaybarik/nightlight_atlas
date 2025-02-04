@@ -6,4 +6,4 @@ scikit-learn
 tensorflow
 matplotlib
 seaborn
-pillow
+Pillow
