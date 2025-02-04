@@ -37,7 +37,7 @@ df = load_data()
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Maps", "Data", "Model", "SHAP Analysis"])
+page = st.sidebar.radio("Go to", ["Maps", "Data", "Model", "SHAP Analysis", "Acknowledgements"])
 
 # 📊 Data Page
 if page == "Data":
