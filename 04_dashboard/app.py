@@ -31,71 +31,77 @@ def load_data():
 
 df = load_data()
 
-# Sidebar Controls
-st.sidebar.title("Dashboard Controls")
-area_filter = st.sidebar.selectbox("Select Area Type", ["All", "Urban", "Rural"])
+# Sidebar Navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Maps", "Data", "Model", "SHAP Analysis"])
 
-df_filtered = df if area_filter == "All" else df[df["area_type"] == area_filter.upper()]
+# Data Page
+if page == "Data":
+    st.title("Data Exploration")
+    st.markdown("### Explore Household Consumption & Nightlight Data")
+    
+    # Area Type Filter
+    area_filter = st.selectbox("Select Area Type", ["All", "Urban", "Rural"])
+    df_filtered = df if area_filter == "All" else df[df["area_type"] == area_filter.upper()]
+    
+    st.subheader("Dataset Overview")
+    st.write(df_filtered.describe())
+    
+    st.subheader("Household Consumption Distribution")
+    fig_hist = px.histogram(df_filtered, x="secc_cons", nbins=50, marginal="violin", opacity=0.75,
+                            color_discrete_sequence=["royalblue"], title="Household Consumption Expenditure Distribution")
+    st.plotly_chart(fig_hist)
+    
+    st.subheader("Nightlight Intensity vs Consumption")
+    fig_scatter = px.scatter(df_filtered, x="dmsp_total_light", y="secc_cons", color="area_type",
+                             trendline="ols", title="Nightlight Intensity vs Household Consumption")
+    st.plotly_chart(fig_scatter)
+    
+    st.subheader("Urban vs Rural Consumption")
+    fig_box = px.box(df, x="area_type", y="secc_cons", title="Urban vs Rural Household Consumption")
+    st.plotly_chart(fig_box)
+    
+    st.subheader("Feature Correlation Heatmap")
+    corr = df_filtered[["log_secc_cons", "dmsp_scaled", "urban_dummy", "nightlight_area_interaction"]].corr()
+    fig_heatmap = ff.create_annotated_heatmap(
+        z=corr.values, x=list(corr.columns), y=list(corr.index),
+        colorscale="RdBu", showscale=True
+    )
+    st.plotly_chart(fig_heatmap)
+    
+    st.markdown("### Insights:")
+    st.markdown("- **Nightlight Intensity**: Higher values indicate more urbanized areas.")
+    st.markdown("- **Household Consumption**: Log transformation helps analyze patterns.")
+    st.markdown("- **Urban Dummy & Interaction Term**: Captures differences in urban and rural settings.")
 
-# Dashboard Title
-st.title("Nightlight & Household Consumption Dashboard")
-st.markdown("An interactive analysis of nightlight intensity and household consumption expenditure.")
+# Model Page
+elif page == "Model":
+    st.title("Neural Network Model for Prediction")
+    
+    # Define features and target variable
+    features = ["dmsp_scaled", "urban_dummy", "nightlight_area_interaction"]
+    target = "log_secc_cons"
+    
+    # Convert to NumPy arrays
+    X = df[features].values
+    y = df[target].values
+    
+    # Split into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    st.markdown(f"Training Set: X_train: {X_train.shape}, y_train: {y_train.shape}")
+    st.markdown(f"Testing Set: X_test: {X_test.shape}, y_test: {y_test.shape}")
+    
+    st.markdown("**Why 80-20 Split?**")
+    st.markdown("- 80% of the data is used for training so the model can learn patterns.")
+    st.markdown("- 20% is reserved for testing to evaluate how well the model generalizes to unseen data.")
+    st.markdown("- Example: If we have 1000 samples, 800 are used for training and 200 for testing.")
 
-# Data Overview
-st.subheader("Dataset Overview")
-st.write(df_filtered.describe())
+# Placeholder for Maps & SHAP Analysis Sections
+elif page == "Maps":
+    st.title("Maps Section Coming Soon")
+    st.markdown("This section will contain interactive visualizations of spatial data.")
 
-# Smooth Histogram of Consumption
-st.subheader("Household Consumption Distribution")
-fig_hist = px.histogram(df_filtered, x="secc_cons", nbins=50, marginal="violin", opacity=0.75,
-                        color_discrete_sequence=["royalblue"], title="Household Consumption Expenditure Distribution")
-st.plotly_chart(fig_hist)
-
-# Scatter Plot
-st.subheader("Nightlight Intensity vs Consumption")
-fig_scatter = px.scatter(df_filtered, x="dmsp_total_light", y="secc_cons", color="area_type",
-                         trendline="ols", title="Nightlight Intensity vs Household Consumption")
-st.plotly_chart(fig_scatter)
-
-# Box Plot
-st.subheader("Urban vs Rural Consumption")
-fig_box = px.box(df, x="area_type", y="secc_cons", title="Urban vs Rural Household Consumption")
-st.plotly_chart(fig_box)
-
-# Correlation Heatmap
-st.subheader("Feature Correlation Heatmap")
-corr = df_filtered[["log_secc_cons", "dmsp_scaled", "urban_dummy", "nightlight_area_interaction"]].corr()
-fig_heatmap = ff.create_annotated_heatmap(
-    z=corr.values, x=list(corr.columns), y=list(corr.index),
-    colorscale="RdBu", showscale=True
-)
-st.plotly_chart(fig_heatmap)
-
-st.markdown("### Insights:")
-st.markdown("- **Nightlight Intensity**: Higher values indicate more urbanized areas.")
-st.markdown("- **Household Consumption**: Log transformation helps analyze patterns.")
-st.markdown("- **Urban Dummy & Interaction Term**: Captures differences in urban and rural settings.")
-
-# Machine Learning Section
-st.markdown("---")
-st.subheader("Neural Network Model for Prediction")
-
-# Define features and target variable
-features = ["dmsp_scaled", "urban_dummy", "nightlight_area_interaction"]
-target = "log_secc_cons"
-
-# Convert to NumPy arrays
-X = df[features].values
-y = df[target].values
-
-# Split into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Display data split details
-st.markdown(f"Training Set: X_train: {X_train.shape}, y_train: {y_train.shape}")
-st.markdown(f"Testing Set: X_test: {X_test.shape}, y_test: {y_test.shape}")
-
-st.markdown("**Why 80-20 Split?**")
-st.markdown("- 80% of the data is used for training so the model can learn patterns.")
-st.markdown("- 20% is reserved for testing to evaluate how well the model generalizes to unseen data.")
-st.markdown("- Example: If we have 1000 samples, 800 are used for training and 200 for testing.")
+elif page == "SHAP Analysis":
+    st.title("SHAP Analysis Coming Soon")
+    st.markdown("This section will contain SHAP value interpretations for feature importance analysis.")
