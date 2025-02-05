@@ -1,2 +1,5 @@
-01_data/
+01_data/01_raw/
+01_data/03_shapefiles
+01_data/02_processed/secc_combined.csv
+01_data/02_processed/secc_combined_updated.csv
 04_dashboard/assets/
