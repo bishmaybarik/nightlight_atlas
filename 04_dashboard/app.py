@@ -277,6 +277,21 @@ elif page == "Model":
 elif page == "Maps":
     st.title("Nightlight and Consumption Inequality Maps")
 
+    import requests
+    import io
+    from PIL import Image
+
+    # Function to load & resize images from URLs
+    def load_and_resize(image_url, width=600, height=600):
+        try:
+            response = requests.get(image_url)
+            response.raise_for_status()  # Raise an error for bad responses (4xx, 5xx)
+            image = Image.open(io.BytesIO(response.content))
+            return image.resize((width, height))
+        except requests.exceptions.RequestException as e:
+            st.error(f"Failed to load image: {image_url}")
+            return None
+
     # File Paths (Use raw.githubusercontent.com)
     map1_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/cons_ineq.png"
     map2_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/nightlights.png"
@@ -299,6 +314,7 @@ elif page == "Maps":
             st.image(map2, caption="Nightlight Intensity", use_container_width=True)
         else:
             st.error("Failed to load Nightlight Intensity map.")
+
 
 
 # 🔍 SHAP Analysis Page
