@@ -15,7 +15,17 @@ from PIL import Image  # Importing Pillow for image resizing
 # File Paths
 data_path = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/01_data/02_processed/secc_combined_updated.parquet"
 save_path = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/05_reports/model_results"
-os.makedirs(save_path, exist_ok=True)
+# os.makedirs(save_path, exist_ok=True)
+
+import os
+import tempfile
+
+# Use a temporary directory
+save_path = tempfile.mkdtemp()
+
+# Now, use this path to save files
+print(f"Files will be saved at: {save_path}")
+
 
 # Load Data
 @st.cache_data
