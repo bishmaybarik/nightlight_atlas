@@ -13,6 +13,7 @@ import seaborn as sns
 from PIL import Image  # Importing Pillow for image resizing
 import requests
 import tempfile
+import io
 
 
 # File Paths
@@ -38,6 +39,8 @@ DATA_URL = f"{BASE_DIR}/01_data/02_processed/secc_combined_updated.parquet"
 # Function to load data from GitHub
 @st.cache_data
 def load_data():
+    DATA_URL = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/01_data/02_processed/secc_combined_updated.parquet"
+    
     response = requests.get(DATA_URL)
     if response.status_code == 200:
         df = pd.read_parquet(io.BytesIO(response.content))
@@ -60,7 +63,6 @@ def load_data():
         return None
 
 df = load_data()
-
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
