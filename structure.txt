@@ -1,31 +1,92 @@
-nightlight_atlas/
-│
-├── 1_data/                              # Data storage
-│   ├── 1.1_raw/                         # Raw SHRUG and nightlight data
-│   ├── 1.2_processed/                   # Cleaned and merged datasets
-│
-├── 2_notebooks/                         # Jupyter notebooks for analysis
-│   ├── 2.1_data_exploration.ipynb       # Exploring the dataset
-│   ├── 2.2_data_cleaning.ipynb          # Preprocessing steps
-│   ├── 2.3_analysis.ipynb               # Impact analysis and results
-│
-├── 3_src/                               # Python scripts for modularity
-│   ├── 3.1_preprocessing.py             # Data cleaning/preprocessing scripts
-│   ├── 3.2_analysis.py                  # Statistical and econometric analysis
-│   ├── 3.3_visualization.py             # Functions for generating plots/maps
-│
-├── 4_dashboard/                         # App files
-│   ├── 4.1_app.py                       # Main Streamlit/Dash app
-│   ├── 4.2_components/                  # Custom components (charts, maps)
-│
-├── 5_reports/                           # Final outputs
-│   ├── 5.1_figures/                     # Graphs and visualizations
-│   ├── 5.2_final_report.pdf             # Summary report
-│
-├── README.md                            # Project overview
-├── requirements.txt                     # Python dependencies
-├── LICENSE                              # License information
-├── .gitignore                           # Files to ignore in Git
-└── setup.py                             # Optional, for packaging
-
-git add . && git commit -m "Your descriptive commit message here" && git push
+.
+├── 01_data
+│   ├── 01_raw
+│   │   ├── shrug-con-keys-csv
+│   │   │   ├── README.md
+│   │   │   ├── ac07_name_key.csv
+│   │   │   ├── ac08_name_key.csv
+│   │   │   ├── core_keys.bib
+│   │   │   ├── shrid_frag_con07_key.csv
+│   │   │   └── shrid_frag_con08_key.csv
+│   │   ├── shrug-dmsp-csv
+│   │   │   ├── README.md
+│   │   │   ├── dmsp_con07.csv
+│   │   │   ├── dmsp_con08.csv
+│   │   │   ├── dmsp_pc11dist.csv
+│   │   │   ├── dmsp_pc11subdist.csv
+│   │   │   ├── dmsp_shrid.csv
+│   │   │   └── night_lights.bib
+│   │   ├── shrug-secc-cons-rural-csv
+│   │   │   ├── README.md
+│   │   │   ├── secc_cons.bib
+│   │   │   ├── secc_cons_rural_con07.csv
+│   │   │   ├── secc_cons_rural_con08.csv
+│   │   │   ├── secc_cons_rural_pc11dist.csv
+│   │   │   ├── secc_cons_rural_pc11subdist.csv
+│   │   │   └── secc_cons_rural_shrid.csv
+│   │   ├── shrug-secc-cons-urban-csv
+│   │   │   ├── README.md
+│   │   │   ├── secc_cons.bib
+│   │   │   ├── secc_cons_urban_con07.csv
+│   │   │   ├── secc_cons_urban_con08.csv
+│   │   │   ├── secc_cons_urban_pc11dist.csv
+│   │   │   ├── secc_cons_urban_pc11subdist.csv
+│   │   │   └── secc_cons_urban_shrid.csv
+│   │   └── shrug-viirs-annual-csv
+│   │       ├── README.md
+│   │       ├── night_lights.bib
+│   │       ├── viirs_annual_con07.csv
+│   │       ├── viirs_annual_con08.csv
+│   │       ├── viirs_annual_pc11dist.csv
+│   │       ├── viirs_annual_pc11subdist.csv
+│   │       └── viirs_annual_shrid.csv
+│   ├── 02_processed
+│   │   ├── secc_combined.csv
+│   │   ├── secc_combined_updated.csv
+│   │   └── secc_combined_updated.parquet
+│   └── 03_shapefiles
+│       └── shrug-shrid-poly-shp
+│           ├── README.md
+│           ├── open_poly.bib
+│           ├── shrid2_open.cpg
+│           ├── shrid2_open.dbf
+│           ├── shrid2_open.prj
+│           ├── shrid2_open.shp
+│           └── shrid2_open.shx
+├── 02_notebooks
+│   ├── data_cleaning.ipynb
+│   ├── data_exploration.ipynb
+│   ├── maps.ipynb
+│   ├── neural_train.ipynb
+│   └── new_neural.ipynb
+├── 03_src
+│   ├── __pycache__
+│   │   └── maps.cpython-312.pyc
+│   ├── maps.py
+│   └── train_model.py
+├── 04_dashboard
+│   ├── app.py
+│   ├── assets
+│   │   ├── cons_ineq.png
+│   │   └── nightlights.png
+│   └── components
+│       └── interactive_map.py
+├── 05_reports
+│   ├── data
+│   │   ├── boxplot_urban_rural.png
+│   │   ├── correlation_heatmap.png
+│   │   ├── correlation_heatmap_urban.png
+│   │   ├── hist_secc_cons.png
+│   │   ├── scatter_nightlight_vs_secc.png
+│   │   └── scatter_nightlight_vs_secc_urban_rural.png
+│   ├── maps
+│   │   ├── cons_ineq.png
+│   │   └── nightlights.png
+│   └── model_results
+│       ├── actual_vs_predicted_consumption.png
+│       └── training_vs_validation_loss.png
+├── LICENSE
+├── README.md
+├── question.pages
+├── requirements.txt
+└── structure.txt
