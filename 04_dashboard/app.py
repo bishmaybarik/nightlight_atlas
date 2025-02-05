@@ -74,21 +74,26 @@ if page == "Data":
 # 🗺️ Maps Page
 elif page == "Maps":
     st.title("Nightlight and Consumption Inequality Maps")
-    
+
     def load_image_from_url(image_url):
-        response = requests.get(image_url)
-        if response.status_code == 200:
+        """Load an image from a given URL and return it as a PIL Image."""
+        try:
+            response = requests.get(image_url)
+            response.raise_for_status()  # Raise error for bad status codes
             return Image.open(io.BytesIO(response.content))
-        else:
-            st.error(f"Failed to load image: {image_url}")
+        except requests.RequestException as e:
+            st.error(f"Failed to load image: {image_url}\nError: {e}")
             return None
 
-    map1_url = f"{BASE_DIR}/05_reports/maps/cons_ineq.png"
-    map2_url = f"{BASE_DIR}/05_reports/maps/nightlights.png"
+    # Corrected GitHub raw URLs for images
+    map1_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/cons_ineq.png"
+    map2_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/nightlights.png"
 
+    # Load images
     map1 = load_image_from_url(map1_url)
     map2 = load_image_from_url(map2_url)
 
+    # Display images side by side
     col1, col2 = st.columns(2)
     with col1:
         if map1:
