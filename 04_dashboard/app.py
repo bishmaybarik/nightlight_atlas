@@ -32,6 +32,8 @@ save_path = tempfile.mkdtemp()
 # Now, use this path to save files
 print(f"Files will be saved at: {save_path}")
 
+# Define the correct URL
+DATA_URL = f"{BASE_DIR}/01_data/02_processed/secc_combined_updated.parquet"
 
 # Function to load data from GitHub
 @st.cache_data
