@@ -19,7 +19,7 @@ import io
 # File Paths
 # Define a global variable for the base directory
 # BASE_DIR = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas"
-BASE_DIR = "https://github.com/bishmaybarik/nightlight_atlas/tree/main"
+BASE_DIR = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main"
 
 # Use it to define file paths
 data_path = f"{BASE_DIR}/01_data/02_processed/secc_combined_updated.parquet"
