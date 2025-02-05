@@ -100,8 +100,6 @@ if page == "Data":
     st.markdown("- **Urban Dummy & Interaction Term**: Captures differences in urban and rural settings.")
 
 # 🤖 Model Page
-# 🤖 Model Page
-# 🤖 Model Page
 elif page == "Model":
     st.title("Neural Network Model for Prediction")
     
