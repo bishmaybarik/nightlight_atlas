@@ -11,14 +11,18 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from PIL import Image  # Importing Pillow for image resizing
+import tempfile
+
 
 # File Paths
-data_path = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/01_data/02_processed/secc_combined_updated.parquet"
-save_path = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/05_reports/model_results"
-# os.makedirs(save_path, exist_ok=True)
+# Define a global variable for the base directory
+BASE_DIR = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas"
 
-import os
-import tempfile
+# Use it to define file paths
+data_path = os.path.join(BASE_DIR, "01_data", "02_processed", "secc_combined_updated.parquet")
+save_path = os.path.join(BASE_DIR, "05_reports", "model_results")
+
+# os.makedirs(save_path, exist_ok=True)
 
 # Use a temporary directory
 save_path = tempfile.mkdtemp()
@@ -220,8 +224,7 @@ elif page == "Model":
 
     # Load and display the images
     st.markdown("### Training vs Validation Loss")
-    training_loss_image = Image.open("/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/05_reports/model_results/training_vs_validation_loss.png")
-    st.image(training_loss_image, caption="Training vs Validation Loss")
+    training_loss_image = Image.open(os.path.join(BASE_DIR, "05_reports", "model_results", "training_vs_validation_loss.png"))
 
     st.markdown(
         """
@@ -233,7 +236,7 @@ elif page == "Model":
     )
 
     st.markdown("### Predictions vs Actual Values")
-    prediction_image = Image.open("/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/05_reports/model_results/actual_vs_predicted_consumption.png")
+    prediction_image = Image.open(os.path.join(BASE_DIR, "05_reports", "model_results", "actual_vs_predicted_consumption.png"))
     st.image(prediction_image, caption="Predicted vs Actual Household Consumption")
 
     st.markdown(
@@ -260,8 +263,8 @@ elif page == "Maps":
     st.title("Nightlight and Consumption Inequality Maps")
 
     # File Paths
-    map1_path = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/05_reports/maps/cons_ineq.png"
-    map2_path = "/Users/bishmaybarik/Library/CloudStorage/OneDrive-ShivNadarInstitutionofEminence/nightlight_atlas/05_reports/maps/nightlights.png"
+    map1_path = os.path.join(BASE_DIR, "05_reports", "maps", "cons_ineq.png")
+    map2_path = os.path.join(BASE_DIR, "05_reports", "maps", "nightlights.png")
 
     # Function to load & resize images
     def load_and_resize(image_path, width=600, height=600):
