@@ -277,27 +277,29 @@ elif page == "Model":
 elif page == "Maps":
     st.title("Nightlight and Consumption Inequality Maps")
 
-    # File Paths
-    map1_path = f"{BASE_DIR}/05_reports/maps/cons_ineq.png"
-    map2_path = f"{BASE_DIR}/05_reports/maps/nightlights.png"
+    # File Paths (Use raw.githubusercontent.com)
+    map1_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/cons_ineq.png"
+    map2_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/nightlights.png"
 
-    # Function to load & resize images
-    def load_and_resize(image_path, width=600, height=600):
-        image = Image.open(image_path)
-        return image.resize((width, height))
+    # Load images correctly
+    map1 = load_and_resize(map1_url)
+    map2 = load_and_resize(map2_url)
 
-    # Resize images
-    map1 = load_and_resize(map1_path)
-    map2 = load_and_resize(map2_path)
-
-    # Create columns for side-by-side layout
+    # Display the images in Streamlit
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image(map1, caption="Consumption Inequality", use_container_width=True)
+        if map1:
+            st.image(map1, caption="Consumption Inequality", use_container_width=True)
+        else:
+            st.error("Failed to load Consumption Inequality map.")
 
     with col2:
-        st.image(map2, caption="Nightlight Intensity", use_container_width=True)
+        if map2:
+            st.image(map2, caption="Nightlight Intensity", use_container_width=True)
+        else:
+            st.error("Failed to load Nightlight Intensity map.")
+
 
 # 🔍 SHAP Analysis Page
 elif page == "SHAP Analysis":
