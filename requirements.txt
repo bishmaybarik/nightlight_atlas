@@ -7,3 +7,4 @@ tensorflow
 matplotlib
 seaborn
 Pillow
+statsmodels
