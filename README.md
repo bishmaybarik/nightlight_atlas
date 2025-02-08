@@ -48,11 +48,11 @@ The primary dataset comes from the **Socio-Economic and Caste Census (SECC) 2011
 
 ## Visualizing Spatial Inequality
 
-### **Consumption Inequality Across India**
-![Consumption Inequality](https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/cons_ineq.png)
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/cons_ineq.png" width="49%" alt="Consumption Inequality Across India">
+    <img src="https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/nightlights.png" width="49%" alt="Nightlight Intensity Across India">
+</div>
 
-### **Nightlight Intensity Across India**
-![Nightlight Intensity](https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/nightlights.png)
 
 ## Neural Network Model
 
