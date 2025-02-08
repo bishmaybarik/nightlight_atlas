@@ -255,7 +255,14 @@ elif page == "SHAP Analysis":
     st.title("SHAP Analysis Coming Soon")
     st.markdown("This section will contain SHAP value interpretations for feature importance analysis.")
 
-# Acknowledgements Page
 elif page == "Acknowledgements":
     st.title("Acknowledgements")
-    st.markdown("A huge thank you to everyone involved in this research!")
+    st.markdown("A heartfelt thank you to the incredible team at the Development Data Lab for their dedication in creating this outstanding dataset. Proper credits have been given to the data contributors below:")
+    
+    st.subheader("References")
+    
+    st.markdown("""
+    - Asher, S., Lunt, T., Matsuura, R., & Novosad, P. (2021). Development research at high geographic resolution: An analysis of night-lights, firms, and poverty in India using the SHRUG open data platform. *The World Bank Economic Review, 35*(4). Oxford University Press.
+    - Henderson, J. V., Storeygard, A., & Weil, D. N. (2011). A bright idea for measuring economic growth. *American Economic Review*.
+    """)
+
