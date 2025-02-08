@@ -4,6 +4,8 @@
 
 This project explores the relationship between **nightlight intensity** and **household consumption expenditure** in India. Using high-resolution geospatial data and machine learning techniques, I build a predictive model that estimates household consumption from satellite-recorded nightlight intensity and other regional characteristics.
 
+In the later part of the project, especially once the analysis is complete, I have also developed a web app — a Dashboard using Streamlit — whose codes can be found in `04_dashboard`. The web app provides an interactive visualization of the analysis and can be accessed at [Nightlight Atlas](https://nightlight-atlas.streamlit.app/).
+
 ## Key Features
 - **Dataset**: The project leverages **SECC (2011) consumption data** and **DMSP/VIIRS nightlight data**.
 - **Machine Learning Model**: A **Neural Network** is trained to predict household consumption based on nightlight intensity and urban-rural classification.
