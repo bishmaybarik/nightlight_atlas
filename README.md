@@ -104,7 +104,9 @@ This section provides an analysis of SHAP (SHapley Additive exPlanation) values 
 
 ## SHAP Summary Plot
 
+<p align="center">
 ![SHAP Summary Plot](https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/SHAP/summary_plot.png)
+</p>
 
 The SHAP summary plot presents the distribution of SHAP values for each feature. The key takeaways from the plot are:
 - **`dmsp_scaled`** has the most significant impact on model predictions, with both positive and negative effects.
@@ -113,7 +115,9 @@ The SHAP summary plot presents the distribution of SHAP values for each feature.
 
 ## SHAP Dependence Plot
 
+<p align="center">
 ![SHAP Dependence Plot](https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/SHAP/dependence_plot.png)
+</p>
 
 The SHAP dependence plot illustrates the interaction between `dmsp_scaled` and `urban_dummy`. Key observations:
 - Higher values of `dmsp_scaled` positively influence the model’s output up to a certain point, after which the impact diminishes.
