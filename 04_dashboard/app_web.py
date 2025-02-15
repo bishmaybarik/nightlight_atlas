@@ -314,7 +314,7 @@ elif page == "SHAP Analysis":
 
 elif page == "Acknowledgements":
     st.title("Acknowledgements")
-    st.markdown("A heartfelt thank you to the incredible team at the Development Data Lab for their dedication in creating this outstanding dataset. Proper credits have been given to the data contributors below:")
+    st.markdown("This project is a self-initiated endeavor with no affiliation to any organization, undertaken solely for personal research and analytical exploration. I sincerely appreciate the efforts of **Development Data Lab** in compiling these datasets. Proper credit is given to the data contributors below.")
     
     st.subheader("References")
     
