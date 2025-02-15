@@ -20,6 +20,8 @@ map1_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main
 map2_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/maps/nightlights.png"
 training_loss_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/model_results/training_vs_validation_loss.png"
 prediction_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/model_results/actual_vs_predicted_consumption.png"
+summary_plot_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/SHAP/summary_plot.png"
+dependence_plot_url = "https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/SHAP/dependence_plot.png"
 
 # Load Data
 @st.cache_data
@@ -252,8 +254,63 @@ elif page == "Maps":
 
 # SHAP Analysis Page
 elif page == "SHAP Analysis":
-    st.title("SHAP Analysis Coming Soon")
-    st.markdown("This section will contain SHAP value interpretations for feature importance analysis.")
+    st.title("SHAP Analysis")
+    
+    st.markdown(
+        """
+        ## Understanding SHAP Analysis
+        SHAP (SHapley Additive ExPlanation) values help us interpret the importance of features in our neural network model.
+        Below is a summary plot showcasing the impact of different features on the model's predictions of household consumption expenditure.
+        """
+    )
+    
+    st.image(load_image(summary_plot_url), caption="SHAP Summary Plot")
+    
+    st.markdown(
+        """
+        ### Key Insights from the SHAP Summary Plot
+        
+        - **Feature Importance:**
+          - `dmsp_scaled` has the highest impact on model predictions, indicating nightlight intensity is a strong predictor of consumption expenditure.
+          - `nightlight_area_interaction` also contributes significantly but to a lesser extent.
+          - `urban_dummy` has the lowest impact among the three features.
+        
+        - **Direction of Impact:**
+          - **Higher `dmsp_scaled` values** (shown in pink) are associated with an increase in predicted expenditure, suggesting a strong positive correlation.
+          - **Higher `nightlight_area_interaction` values** also have a positive impact, reinforcing the relationship between nightlight density and economic activity.
+          - **Higher `urban_dummy` values** (indicating urban areas) tend to slightly increase predicted expenditure, but with lower variance.
+        
+        - **Distribution of SHAP Values:**
+          - Many points are concentrated near zero, meaning for several instances, these features have minimal impact on predictions.
+          - A few high-impact outliers suggest specific cases where nightlight intensity significantly alters the model’s predictions.
+        
+        ### Interpretation
+        The SHAP summary plot confirms that **nightlight intensity is a strong predictor** of household consumption, supporting our hypothesis. However, the effect is not uniform—some features exhibit **diminishing returns** in their predictive power. The results indicate a need for further exploration, possibly incorporating **non-linear transformations** or **interaction terms** to refine the model.
+        """
+    )
+
+    st.image(load_image(dependence_plot_url), caption="SHAP Dependence Plot")
+
+    st.markdown(
+        """
+        ### Key Insights from the SHAP Dependence Plot
+        
+        - **Non-linear Relationship:**
+          - When `dmsp_scaled` is low (0–20), SHAP values increase sharply, indicating that even a small rise in nightlight intensity significantly boosts predicted household consumption.
+          - After `dmsp_scaled` exceeds 20, the impact starts to decline, suggesting a **diminishing marginal effect**—higher nightlight levels contribute less to predictions beyond a certain threshold.
+        
+        - **Urban vs. Rural Differences (Color Encoding for `urban_dummy`):**
+          - The **blue dots (rural areas)** show more spread in SHAP values, meaning nightlight intensity has a higher variation in its influence on expenditure predictions.
+          - The **red dots (urban areas)** cluster around moderate SHAP values, implying a more stable, predictable relationship between nightlight and expenditure in urban settings.
+        
+        - **Outlier at High `dmsp_scaled`:**
+          - There is an extreme case beyond `dmsp_scaled = 175`, where the impact on SHAP values is minimal. This suggests that very high nightlight intensity does not strongly influence expenditure predictions.
+        
+        ### Interpretation
+        The dependence plot reveals that **nightlight is a strong predictor of consumption expenditure, but with diminishing returns**. While it is effective in distinguishing low to moderate expenditure households, the predictive power weakens for very high nightlight values. Additionally, rural areas exhibit more variability, which could be influenced by factors such as infrastructure, economic activity, or electrification rates. These findings suggest that refining the model by incorporating **non-linear transformations** or **interaction terms** could enhance predictive accuracy.
+        """
+    )
+
 
 elif page == "Acknowledgements":
     st.title("Acknowledgements")
