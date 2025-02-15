@@ -123,11 +123,15 @@ These insights help in understanding how nightlight intensity (dmsp_scaled) cont
 
 ## Acknowledgements
 
-I would like to thank **Development Data Lab** for their outstanding work in compiling these datasets. Proper credits are given to the data contributors below:
+This project is a self-initiated endeavor with no affiliation to any organization, undertaken solely for personal research and analytical exploration. I sincerely appreciate the efforts of **Development Data Lab** in compiling these datasets. Proper credit is given to the data contributors below.
 
 ### References
 - Asher, S., Lunt, T., Matsuura, R., & Novosad, P. (2021). *Development research at high geographic resolution: An analysis of night-lights, firms, and poverty in India using the SHRUG open data platform.* The World Bank Economic Review, 35(4).
 - Henderson, J. V., Storeygard, A., & Weil, D. N. (2011). *A bright idea for measuring economic growth.* American Economic Review.
+
+---
+
+Note: I aim to keep this project up-to-date. If you have any suggestions or contributions, please feel free to open a pull request. Your input is always welcome!
 
 ---
 
