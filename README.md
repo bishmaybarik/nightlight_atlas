@@ -98,7 +98,6 @@ y_test_actual = np.expm1(y_test)
 ### Actual vs Predicted Household Consumption
 ![Actual vs Predicted](https://raw.githubusercontent.com/bishmaybarik/nightlight_atlas/main/05_reports/model_results/actual_vs_predicted_consumption.png)
 
-```markdown
 # SHAP Analysis
 
 This section provides an analysis of SHAP (SHapley Additive exPlanation) values to interpret feature importance in the neural network model. Below, we include key SHAP visualizations to understand how different features impact household consumption expenditure predictions.
@@ -121,7 +120,6 @@ The SHAP dependence plot illustrates the interaction between `dmsp_scaled` and `
 - The impact varies depending on `urban_dummy`, with urban areas (pink points) showing a slightly different pattern compared to rural areas (blue points).
 
 These insights help in understanding how nightlight intensity (dmsp_scaled) contributes to household consumption expenditure predictions and how it interacts with other features like urbanization.
-```
 
 ## Acknowledgements
 
