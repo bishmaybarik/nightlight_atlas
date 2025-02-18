@@ -1,0 +1,23 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Effect of Nightlight Intensity on SECC Consumption}
+\begin{tabular}{l*{1}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}\\
+                    &\multicolumn{1}{c}{Pooled Model with Interaction}\\
+\midrule
+Nightlight Intensity&       14.32\sym{***}\\
+                    &     (0.151)         \\
+Urban Dummy         &     36802.5\sym{***}\\
+                    &     (414.9)         \\
+Interaction Term    &      -12.69\sym{***}\\
+                    &     (0.193)         \\
+\_cons              &     80005.2\sym{***}\\
+                    &     (33.06)         \\
+\midrule
+Observations        &      567429         \\
+R-squared           &      0.0312         \\
+\bottomrule
+\multicolumn{2}{l}{\footnotesize Dependent Variable: SECC Consumption}\\
+\end{tabular}
+\end{table}
