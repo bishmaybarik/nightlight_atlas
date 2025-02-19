@@ -214,9 +214,9 @@ elif page == "Model":
     st.markdown(
         """
         **Interpretation:**
-        - The training loss decreases steadily during the initial epochs, showing that the model learns effectively.
-        - The validation loss follows a similar trend but plateaus earlier, suggesting the model may begin to overfit after a certain point.
-        - The final losses are close, indicating the model generalizes well on unseen data.
+        - The training loss decreases steadily during the initial epochs, showing that the model learns effectively, but this sudden and steep fall is concerning.
+        - Approximately after the fifth epoch, both training and validation losses plateau close to zero, indicating that the model has effectively converged.
+        - The extreme drop in loss within the first few iterations, followed by near-zero values, raises the possibility of excessively high learning rates, which might lead to numerical instability or an underestimation of true prediction error.
         """
     )
     
@@ -226,9 +226,9 @@ elif page == "Model":
     st.markdown(
         """
         **Interpretation:**
-        - The scatter plot shows predicted values closely aligning with actual values, as most points are near the diagonal.
-        - Some variance is observed for extremely high consumption values, which may indicate potential outliers or areas where the model's predictions are less accurate.
-        - Overall, the model performs well in capturing the relationship between the features and target variable.
+        - The scatter plot shows predicted values moderately aligning with actual values. It would have been better if points were closely knitted to the diagonal.
+        - he plot shows a dense horizontal clustering around specific predicted values (70,000 and 110,000), indicating that the model is saturating its predictions within a narrow range, failing to capture the full variance in actual consumption.
+        - There might be issues like  model underfitting, limited feature expressiveness, or poor target transformation. 
         """
     )
     
