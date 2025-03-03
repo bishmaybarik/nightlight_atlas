@@ -10,7 +10,7 @@ In the later part of the project, especially once the analysis is complete, I ha
 - **Dataset**: The project leverages **SECC (2011) consumption data** and **DMSP/VIIRS nightlight data**.
 - **Machine Learning Model**: A **Neural Network** is trained to predict household consumption based on nightlight intensity and urban-rural classification.
 - **Data Visualization**: Interactive dashboards and maps illustrate spatial variations in nightlights and economic inequality.
-- **SHAP Analysis (Coming Soon)**: I will analyze feature importance using SHAP values to interpret the model’s predictions.
+- **SHAP Analysis**: I will analyze feature importance using SHAP values to interpret the model’s predictions.
 
 ## Directory Structure
 ```
